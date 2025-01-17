@@ -1,0 +1,24 @@
+### Project 4: Leap Year Checker
+**Summary**: This program allows to check for rules and conditions regarding leap years.
+**Key Features**: 
+- I was able to tell the function a set of rules, and the function ran and determined which years were leap years.
+- Checked for divisibility
+
+Code
+#Parker Paduck
+#11/7/2024
+#LeapYearChecker
+
+def is_leap_year(year):
+    if year % 400 == 0:
+        return True
+    if year % 100 == 0:
+        return False
+    if year % 4 == 0:
+        return True
+    return False
+
+# Test cases
+print(is_leap_year(2024))  
+print(is_leap_year(1900))
+print(is_leap_year(1600))
