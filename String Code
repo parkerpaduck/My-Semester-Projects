@@ -1,0 +1,30 @@
+### Project 3: String Code 
+**Summary**: This program was a key part of my learning in coding. The skills that I leaned from this assignment were immense. 
+**Key Features**: 
+- Learned how to capitalize different letters
+- Learned how to replace letters
+- Almost like a puzzle
+
+Code
+#Parker Paduck
+#12/5
+#Strings
+
+#Initialize
+message = "computer science at jones is the best?"
+X=message.capitalize()
+Y=message.upper()
+Z=message.replace("?","!")
+A=message.rfind("jones")
+#Functions
+#Main
+
+#Complete the following tasks using string methods
+#Task 1: Capitilize the first letter
+print(X)
+#Task 2: Uppercase the sentence (Use all capital letters)
+print(Y)
+#Task 3: Replace the ? with an !
+print(Z)
+#Task 4: Find and print the position of the word jones in the string
+print(A)
