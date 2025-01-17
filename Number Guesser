@@ -1,0 +1,29 @@
+### Project 2: Number Guesser 
+**Summary**: This program allows users to think of a number and for the computer program to guess it. 
+**Key Features**: 
+- Random modules
+- Makes user interact
+
+Code
+#Parker Paduck
+#numberguesser
+#11/13/2024
+
+import random
+
+print("Guess a Number between 0-10")
+guessed = int(input("Enter Number")) #guessing number
+computer = random.randint(0,10) #generated number
+
+if guessed==computer:
+    print("Correct")
+if computer < guessed:
+    print ("too high a number")
+if computer > guessed:
+    print("too low a number")
+    guessed=int(input("Enter Number"))
+
+    if guessed==computer:
+        print("correct") #this shows if you go the guess correct
+    else:
+        print("incorrect, the number is ") + "" + str(computer) #This shows the correct number
