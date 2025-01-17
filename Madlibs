@@ -1,0 +1,25 @@
+### Project 1: Madlibs Story Program 
+**Summary**: This program allows users to create their own story and add complexity. 
+**Key Features**: 
+- There are random inputs
+- Many outcomes regarding verbs and nouns
+- Many different stories can be made
+
+Code
+#Parker Paduck
+#Madlibs
+
+#Introduciton
+print("Welcome to Mad Libs")
+
+#Inputs
+noun1  = input("Enter a noun:")
+adjective1 = input("Enter an adjective:")
+verb1 = input(" Enter a verb:")
+adverb = input("Ender a adverb:")
+noun2 = input(" Enter another noun:")
+
+story = "Once upon a time, someone who was named " + noun1 + " was very " + adjective1 + ". One day, " + noun1 + " decided to go " + verb1 + " " + adverb + ". On the way, the character was " + noun2 + " and became very tired."
+
+#Main
+print(story)
