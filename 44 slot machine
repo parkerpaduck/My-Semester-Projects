@@ -1,0 +1,90 @@
+#Parker Paduck
+#AP CSP
+#Feb 6
+
+### Project 1: Slot Machine
+**Summary**: This program allows users to bet on a slot machine. The program can change the bet amount, and has a jackpot.
+**Key Features**: 
+- Can add more symbols for a harder win.
+- Able to adjust odds. 
+- Has a jackpot.  
+
+
+import random
+
+def spin_slots(symbols): "Spins the three choices."
+    return random.choices(symbols, k=3)
+
+def display_slots(slots): "Displays the symbols."
+    print(" ".join(slots))
+
+def check_win(slots):
+    "Checks if the player wins."
+
+    if slots[0] == slots[1] == slots[2] == '7':
+        return "Jackpot!"  # Jackpot!
+    elif slots[0] == slots[1] == slots[2]:
+        return "Win!" # 3 matching symbols = Win!
+    else:
+        return "Loss!" # Mismatched symbols = Loss!
+
+def play_slot_machine(symbols, credits):n "Plays the slot machine game."
+    while True:
+        try:
+            if credits <= 0:
+                print("Game Over!")
+                return
+
+            play_again = input("Spin the slots? (y/n): ").lower()
+            if play_again != 'y':
+                break
+
+            bet = int(input(f"Enter your bet (1-{credits}): "))
+            if bet < 1 or bet > credits:
+                print("Invalid bet amount.")
+                continue
+
+            credits -= bet
+            slots = spin_slots(symbols)
+            display_slots(slots)
+            result = check_win(slots)
+            print(result)
+
+            if result == "Jackpot!":
+                winnings = bet * 10  # 10x bet for Jackpot
+                credits += winnings
+                print("You won {winnings} credit Total credits: {credits}")
+            elif result == "Win!":
+                winnings = bet * 2 # 2x bet for Win
+                credits += winnings
+                print("You won {winnings} credits! Total credits: {credits}")
+            else:
+                print("You lost {bet} credits. Total credits: {credits}")
+
+        except ValueError:
+            print("Invalid input, enter a number.")
+
+# Main game loop
+if name== "main":
+    symbols = ['♥', '♦', '♠', '7']  # symbols
+    credits = 100 # Start with 100 credits
+
+    while True:
+        print("Welcome to the Slot Machine!")
+        play_slot_machine(symbols, credits)
+        play_more = input("Play again? (y/n): ").lower()
+        if play_more != 'y':
+            break
+
+        # Add more symbols to make it harder
+        add_symbols = input("Add more symbols for a harder game? (y/n): ").lower()
+        if add_symbols == 'y':
+            symbols = ['♥', '♦', '♠', '7', '☆', '♣']
+
+        # Adjust the odds
+        adjust_odds = input("Adjust odds for '7' (Jackpot harder to get)? (y/n): ").lower()
+        if adjust_odds == 'y':
+            symbols = ['♥', '♦', '♠', '7', '☆', '♣', '♥', '♦', '♠', '☆', '♣'] # Lowered the number of 7s
+            print("Odds of '7' reduced.")
+
+    print("Thanks for playing!")
