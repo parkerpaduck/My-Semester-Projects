@@ -1,0 +1,91 @@
+#Parker Paduck
+#Feb 13 2025
+
+### Project 2: Tetris score
+**Summary**: This program allows users to calculate the average, highest and lowest scores in the game tetris. Also, scores are updated if there is a new high score.
+**Key Features**: 
+- Find the highest score.
+- Finds the lowest score. 
+- Able to find the average.  
+
+
+def find_highest_score(scores): #Finds the highest score
+    highest = scores[0]
+    for score in scores:
+        if score > highest:
+            highest = score
+    return highest
+
+def find_lowest_score(scores): #Finds the lowest score
+    lowest = scores[0]
+    for score in scores:
+        if score < lowest:
+            lowest = score
+    return lowest
+
+def calculate_average_score(scores): #Finds the average of the scores
+    total = 0
+    for score in scores:
+        total += score
+    average = total / len(scores)
+    return average
+
+def update_scores(scores, new_score): #Updates the new higher scores if they are bigger
+    lowest_score = find_lowest_score(scores)
+    if new_score > lowest_score:
+        scores.remove(lowest_score)
+        scores.append(new_score)
+        scores.sort(reverse=True) #Descending order
+        if len(scores) > 100:
+            scores = scores[:100]
+        print("New score added to the list!")
+    else:
+        print("Score is not high enough to be in the top 100.")
+
+# List of Tetris scores (unsorted)
+scores = [
+    3600460, 1388900, 5435960, 4222920, 8063900, 1362703, 6529560, 2043580, 1390000, 1696224,
+    1372600, 2535840, 2605320, 2275996, 11966100, 1472600, 1390780, 1768400, 1333731, 1317580,
+    1777456, 4899280, 2790920, 1626880, 1476400, 29486164, 4570640, 1649100, 4890220, 6492500,
+    1614120, 5157860, 1582980, 1357480, 2382340, 1532660, 2378832, 1316520, 2529080, 13793540,
+    1386260, 1352620, 1442340, 1406260, 1705680, 12409180, 2281848, 3222400, 1349060, 2302480,
+    1571120, 3067100, 3740500, 1606732, 2153480, 2011360, 1344740, 1371060, 1345420, 2373940,
+    1702940, 2077552, 2108820, 1322485, 1404800, 2555620, 1405580, 4213540, 3835120, 6563440,
+    1350742, 1537800, 1657560, 1333995, 1632505, 2743060, 1509751, 1554880, 1316540, 1323680,
+    2433160, 1340460, 1659860, 1608500, 7220241, 1834120, 7081880, 1483360, 16700760, 1435280,
+    1702640, 1371040, 1316900, 2114180, 1374100, 1412260, 1379220, 1319573, 1623160, 6787420
+]
+
+scores.sort(reverse=True)
+if len(scores) > 100:
+    scores = scores[:100]
+
+while True:
+    print("Tetris Score Analysis")
+    print("1. Find Highest Score")
+    print("2. Find Lowest Score")
+    print("3. Calculate Average Score")
+    print("4. Add New Score")
+    print("5. Exit")
+
+    choice = input("Enter your choice:")
+
+    if choice == '1':
+        highest = find_highest_score(scores)
+        print("Highest score:", highest)
+    elif choice == '2':
+        lowest = find_lowest_score(scores)
+        print("Lowest score:", lowest)
+    elif choice == '3':
+        average = calculate_average_score(scores)
+        print("Average score:", average)
+    elif choice == '4':
+        try:
+            new_score = int(input("Enter the new score: "))
+            update_scores(scores, new_score)
+        except ValueError:
+            print("Invalid input. Please enter a valid integer score.")
+    elif choice == '5':
+        break
+    else:
+        print("Invalid choice. Please try again.")
